@@ -28,8 +28,8 @@ class MTGBot < Sinatra::Base
 
   def find_mtg_image
 
-    url = URI.parse('http://magictcgprices.appspot.com/api/images/imageurl.json?cardname=' + search_term)
-    req = Net::HTTP::Get.new(url.to_s)
+    url = URI.parse('http://magictcgprices.appspot.com/api/images/imageurl.json?cardname=')
+    req = Net::HTTP::Get.new(url.to_s + search_term)
     res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
     }
@@ -41,7 +41,7 @@ class MTGBot < Sinatra::Base
   end
 
   def search_term
-    params[:text].gsub(" ", "+").strip.downcase
+    params[:text].gsub(" ", "%20").strip.downcase
   end
 
   def cache_buster
