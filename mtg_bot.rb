@@ -18,7 +18,7 @@ class MTGBot < Sinatra::Base
   end
 
   def params_present?
-    params.has_key?("text") && params.has_key?("trigger_word")
+    params.has_key?("text")
   end
 
   def format_message(message)
