@@ -34,7 +34,7 @@ class MTGBot < Sinatra::Base
   end
 
   def search_term
-    params[:text].gsub(params[:trigger_word], "").strip.downcase
+    params[:text].strip.downcase
   end
 
   def cache_buster
