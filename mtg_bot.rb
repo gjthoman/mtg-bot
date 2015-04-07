@@ -41,7 +41,7 @@ class MTGBot < Sinatra::Base
   end
 
   def search_term
-    params[:text].gsub(" ", "%20").strip.downcase
+    '"' + params[:text].gsub(" ", "%20").strip.downcase = '"'
   end
 
   def cache_buster
