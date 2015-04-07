@@ -1,3 +1,4 @@
+require 'net/http'
 require "sinatra/base"
 require "json"
 
@@ -26,11 +27,13 @@ class MTGBot < Sinatra::Base
   end
 
   def find_gif
-    if @@gifs.key?(search_term)
-      @random_gif = @@gifs[search_term] + cache_buster
-    else
-      false
-    end
+    url = URI.parse(' http://magictcgprices.appspot.com/api/images/imageurl.json?cardname=Pillar%20of%20Flame')
+    req = Net::HTTP::Get.new(url.to_s)
+    res = Net::HTTP.start(url.host, url.port) {|http|
+      http.request(req)
+    }
+    
+    res.body
   end
 
   def search_term
