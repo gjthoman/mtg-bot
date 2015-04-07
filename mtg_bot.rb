@@ -28,7 +28,7 @@ class MTGBot < Sinatra::Base
 
   def find_mtg_image
 
-    url = URI.parse('http://magictcgprices.appspot.com/api/images/imageurl.json?cardname="' + search_term + '"')
+    url = URI.parse('http://magictcgprices.appspot.com/api/images/imageurl.json?cardname=' + search_term)
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
