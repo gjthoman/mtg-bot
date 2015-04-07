@@ -33,7 +33,7 @@ class MTGBot < Sinatra::Base
       http.request(req)
     }
     
-    res.body
+    res.body[:text]
   end
 
   def search_term
