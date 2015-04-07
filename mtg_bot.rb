@@ -35,7 +35,7 @@ class MTGBot < Sinatra::Base
     
     mtg = JSON.parse(res.body)
 
-    mtg['text']
+    mtg[0]
     
   end
 
