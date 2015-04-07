@@ -36,7 +36,7 @@ class MTGBot < Sinatra::Base
     
     mtg = JSON.parse(res.body)
 
-    mtg[0] + cache_buster
+    mtg[0]
     
   end
 
