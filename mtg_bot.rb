@@ -33,7 +33,9 @@ class MTGBot < Sinatra::Base
       http.request(req)
     }
     
-    JSON.parse(res.body)
+    mtg = JSON.parse(res.body)
+
+    mtg['text']
     
   end
 
