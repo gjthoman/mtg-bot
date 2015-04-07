@@ -11,10 +11,10 @@ class MTGBot < Sinatra::Base
   post "/" do
     content_type :json
 
-    if params_present? && find_gif
-      format_message(find_gif)
+    if params_present? && find_mtg_image
+      format_message(find_mtg_image)
     else
-      format_message("I couldn't find a gif :cry:")
+      format_message("I couldn't find an image :cry:")
     end
   end
 
@@ -26,8 +26,9 @@ class MTGBot < Sinatra::Base
     { text: message }.to_json
   end
 
-  def find_gif
-    url = URI.parse(' http://magictcgprices.appspot.com/api/images/imageurl.json?cardname=Pillar%20of%20Flame')
+  def find_mtg_image
+
+    url = URI.parse("http://magictcgprices.appspot.com/api/images/imageurl.json?cardname=" + params[:text])
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
