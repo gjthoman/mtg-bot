@@ -23,7 +23,7 @@ class MTGBot < Sinatra::Base
   end
 
   def format_message(message)
-    { text: message }.to_json
+    message
   end
 
   def find_mtg_image
